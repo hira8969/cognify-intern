@@ -1,0 +1,124 @@
+.auth-body {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.auth-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.75fr);
+  width: min(1120px, 100%);
+  min-height: 700px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(24px);
+}
+
+.auth-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  color: #fff;
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.7)),
+    url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1400&q=80") center/cover;
+}
+
+.register-visual {
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.74)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80") center/cover;
+}
+
+.auth-visual .brand-mark,
+.auth-visual .brand-mark small {
+  color: #fff;
+}
+
+.auth-hero-copy {
+  max-width: 620px;
+}
+
+.auth-hero-copy h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.25rem, 5vw, 4.7rem);
+  font-weight: 800;
+  line-height: 0.98;
+}
+
+.auth-hero-copy p:last-child {
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.metric-strip div {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(16px);
+}
+
+.metric-strip strong,
+.metric-strip span {
+  display: block;
+}
+
+.metric-strip span {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.82rem;
+}
+
+.auth-panel {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  width: min(430px, 100%);
+}
+
+.form-heading {
+  margin-bottom: 1.5rem;
+}
+
+.form-heading h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.auth-switch {
+  margin: 1.2rem 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.strength-meter {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.16);
+}
+
+.strength-meter span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--danger);
+  transition: width 0.2s ease, background 0.2s ease;
+}

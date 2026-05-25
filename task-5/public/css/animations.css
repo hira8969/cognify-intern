@@ -1,0 +1,76 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 220ms ease both;
+}
+
+.skeleton-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.skeleton-card {
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  padding: 1rem;
+  position: relative;
+}
+
+.skeleton-card::after {
+  animation: shimmer 1.25s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+.skeleton-avatar,
+.skeleton-lines span {
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+.skeleton-avatar {
+  height: 44px;
+  width: 44px;
+}
+
+.skeleton-lines {
+  display: grid;
+  flex: 1;
+  gap: 0.55rem;
+}
+
+.skeleton-lines span {
+  display: block;
+  height: 14px;
+}
+
+.skeleton-lines span:nth-child(2) {
+  width: 74%;
+}
+
+.skeleton-lines span:nth-child(3) {
+  width: 48%;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "cognifyz-student-registration",
+  "version": "1.0.0",
+  "description": "Cognifyz Internship Task 6 - Secure MERN student management system with MongoDB, JWT authentication, protected APIs, and premium dashboard UI.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "cognifyz",
+    "node",
+    "express",
+    "ejs",
+    "student-registration"
+  ],
+  "author": "Cognifyz Internship Project",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.2",
+    "morgan": "^1.10.1",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

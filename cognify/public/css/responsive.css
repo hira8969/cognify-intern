@@ -1,0 +1,272 @@
+@media (max-width: 1199.98px) {
+  .hero-copy h1 {
+    font-size: clamp(2.45rem, 6vw, 4.8rem);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991.98px) {
+  .section-pad {
+    padding: 104px 0 64px;
+  }
+
+  .navbar-collapse {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.94);
+    padding: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .app-navbar .nav-link::after {
+    left: 0;
+    right: auto;
+    width: 36px;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-copy {
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  .hero-copy .section-kicker,
+  .hero-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-metrics {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .register-sidebar,
+  .form-card {
+    position: static;
+  }
+
+  .dashboard-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .footer-grid {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .section-pad {
+    padding: 94px 0 54px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 12vw, 3.65rem);
+  }
+
+  .hero-lead {
+    font-size: 0.98rem;
+  }
+
+  .hero-actions,
+  .action-row,
+  .content-toolbar,
+  .form-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .btn,
+  .action-row .btn,
+  .content-toolbar .btn {
+    width: 100%;
+  }
+
+  .hero-metrics,
+  .stats-grid,
+  .action-row {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-card.tall,
+  .visual-list {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .visual-card.tall {
+    min-height: 230px;
+  }
+
+  .form-card,
+  .register-sidebar,
+  .dashboard-hero,
+  .dashboard-content,
+  .success-card {
+    padding: 20px;
+  }
+
+  .completion-pill {
+    width: 100%;
+  }
+
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .search-form i {
+    top: 18px;
+  }
+
+  .search-form .btn {
+    width: 100%;
+  }
+
+  .student-table-wrap {
+    display: none;
+  }
+
+  .student-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .detail-item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .detail-item strong {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .brand-lockup strong {
+    font-size: 0.96rem;
+  }
+
+  .brand-lockup small {
+    font-size: 0.68rem;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .btn {
+    min-height: 48px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .section-kicker {
+    font-size: 0.68rem;
+  }
+
+  .hero-metrics div,
+  .feature-card,
+  .stat-card,
+  .student-card {
+    padding: 18px;
+  }
+
+  .form-floating-icon label {
+    left: 44px;
+    max-width: calc(100% - 92px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .textarea-group label {
+    max-width: calc(100% - 128px);
+  }
+
+  .form-floating-icon .form-control,
+  .form-floating-icon .form-select {
+    min-height: 60px;
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .icon-action {
+    right: 8px;
+  }
+
+  .char-counter {
+    right: 12px;
+    font-size: 0.7rem;
+  }
+
+  .student-card dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .form-card,
+  .register-sidebar,
+  .dashboard-hero,
+  .dashboard-content,
+  .success-card {
+    padding: 16px;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.05rem;
+  }
+
+  .visual-card strong {
+    font-size: 2.6rem;
+  }
+
+  .form-floating-icon label {
+    max-width: calc(100% - 86px);
+  }
+
+  .textarea-group label {
+    max-width: calc(100% - 118px);
+  }
+}

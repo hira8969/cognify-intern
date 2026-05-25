@@ -1,0 +1,21 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.focus-ring:focus-visible,
+.btn:focus-visible,
+.icon-action:focus-visible,
+.toast-close:focus-visible,
+.icon-danger:focus-visible {
+  outline: 3px solid rgba(55, 88, 249, 0.32);
+  outline-offset: 2px;
+}
+
+.u-wrap {
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Advanced Student Registration System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark">AS</span>
+        <span>Advanced Student Registration</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Register</a>
+        <a href="/dashboard">Dashboard</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell container-fluid">
+    <section class="dashboard-hero">
+      <div>
+        <p class="eyebrow">Dashboard</p>
+        <h1>Registered Students</h1>
+        <p>All data shown here is stored temporarily in the server-side users array.</p>
+      </div>
+      <div class="count-card">
+        <span id="registrationCount">0</span>
+        <strong>Total Registrations</strong>
+      </div>
+    </section>
+
+    <section class="glass-card dashboard-card">
+      <form class="row g-3 align-items-center mb-4" id="searchForm">
+        <div class="col-md">
+          <input class="form-control" type="search" id="searchInput" placeholder="Search by name, email, or course">
+        </div>
+        <div class="col-md-auto d-flex gap-2">
+          <button class="primary-button compact-button" type="submit">Search</button>
+          <button class="btn btn-light clear-link" id="clearSearch" type="button">Clear</button>
+        </div>
+      </form>
+
+      <div class="empty-state d-none" id="emptyState">
+        <h2>No students found</h2>
+        <p>Submit the registration form to add students to this dashboard.</p>
+        <a href="/" class="primary-button link-button">Register Student</a>
+      </div>
+
+      <div id="dashboardContent">
+        <div class="table-responsive student-table">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Contact</th>
+                <th>Course</th>
+                <th>Registered</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="user-card-grid" id="studentCardGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Cognifyz Task 2 | HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, Node.js, and Express.js</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/validation.js"></script>
+</body>
+</html>

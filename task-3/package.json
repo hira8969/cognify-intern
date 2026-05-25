@@ -1,0 +1,26 @@
+{
+  "name": "modern-responsive-student-management-frontend",
+  "version": "1.0.0",
+  "description": "Cognifyz Task 3 - Modern responsive student management frontend using Express, EJS, Bootstrap 5, CSS3, and JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cognifyz",
+    "student-management",
+    "express",
+    "ejs",
+    "bootstrap",
+    "frontend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.5",
+    "ejs": "^3.1.10",
+    "express": "^4.22.2"
+  },
+  "devDependencies": {}
+}

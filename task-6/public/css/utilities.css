@@ -1,0 +1,14 @@
+.text-muted-soft {
+  color: var(--muted);
+}
+
+.glass-surface {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.no-wrap {
+  white-space: nowrap;
+}

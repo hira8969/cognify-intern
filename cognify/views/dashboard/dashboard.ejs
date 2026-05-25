@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="dashboard-body">
+  <%- include('../partials/sidebar') %>
+
+  <main class="secure-dashboard">
+    <header class="dashboard-topbar">
+      <button class="icon-action sidebar-toggle" type="button" id="sidebarToggle" aria-label="Toggle sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div>
+        <span class="section-kicker">Protected Dashboard</span>
+        <h1>Student Management</h1>
+      </div>
+      <div class="profile-menu">
+        <div class="profile-avatar"><%= user.name.charAt(0).toUpperCase() %></div>
+        <div>
+          <strong><%= user.name %></strong>
+          <small><%= user.email %></small>
+        </div>
+        <button class="btn btn-outline-brand btn-ripple" id="logoutButton" type="button">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <section class="stats-grid" id="analytics">
+      <article class="stat-card"><span>Total Students</span><strong data-stat="totalUsers">0</strong><small>MongoDB records</small></article>
+      <article class="stat-card"><span>Visible</span><strong data-stat="activeUsers">0</strong><small>After search</small></article>
+      <article class="stat-card"><span>Courses</span><strong data-stat="courseCount">0</strong><small>Unique tracks</small></article>
+      <article class="stat-card"><span>Last Update</span><strong data-stat="lastUpdated">--</strong><small>Database sync</small></article>
+    </section>
+
+    <section class="dashboard-content" id="students">
+      <div class="content-toolbar">
+        <div>
+          <h2>Student Directory</h2>
+          <p id="dashboardSummary">Loading secure records...</p>
+        </div>
+        <div class="dashboard-actions">
+          <div class="search-form live-search-shell">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="studentSearch" placeholder="Search name, email, course">
+          </div>
+          <button class="btn btn-brand btn-ripple" type="button" id="addStudentButton">
+            <i class="fa-solid fa-user-plus"></i>
+            Add Student
+          </button>
+        </div>
+      </div>
+
+      <div class="chart-grid">
+        <article class="chart-card">
+          <h3>Course Distribution</h3>
+          <div class="course-bars" id="courseBars"></div>
+        </article>
+        <article class="chart-card">
+          <h3>Security Status</h3>
+          <div class="security-list">
+            <span><i class="fa-solid fa-check"></i> JWT protected APIs</span>
+            <span><i class="fa-solid fa-check"></i> bcrypt hashed passwords</span>
+            <span><i class="fa-solid fa-check"></i> User-owned student records</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="student-card-grid task4-card-grid" id="studentCards" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon"><i class="fa-regular fa-folder-open"></i></div>
+        <h2>No students found</h2>
+        <p>Create a student record or adjust your search.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content app-modal">
+        <form id="studentForm" novalidate>
+          <div class="modal-header">
+            <div>
+              <span class="section-kicker">Student Record</span>
+              <h2 class="modal-title" id="studentModalTitle">Add Student</h2>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="id">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="modal-label">Full Name</label><input class="form-control" name="fullName" required></div>
+              <div class="col-md-6"><label class="modal-label">Email</label><input class="form-control" name="email" type="email" required></div>
+              <div class="col-md-6"><label class="modal-label">Phone</label><input class="form-control" name="phone" maxlength="10" required></div>
+              <div class="col-md-6"><label class="modal-label">Age</label><input class="form-control" name="age" type="number" min="18" max="60" required></div>
+              <div class="col-md-6">
+                <label class="modal-label">Gender</label>
+                <select class="form-select" name="gender" required>
+                  <option value="">Select gender</option>
+                  <option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="modal-label">Course</label>
+                <select class="form-select" name="course" required>
+                  <option value="">Select course</option>
+                  <% courses.forEach((course) => { %><option><%= course %></option><% }) %>
+                </select>
+              </div>
+              <div class="col-12"><label class="modal-label">Address</label><textarea class="form-control" name="address" rows="3" required></textarea></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-brand" type="button" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn btn-brand btn-ripple" type="submit"><i class="fa-solid fa-floppy-disk"></i><span>Save Student</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/js/dashboard/dashboard.js"></script>
+</body>
+</html>

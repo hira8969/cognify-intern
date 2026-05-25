@@ -1,0 +1,24 @@
+{
+  "name": "interactive-student-management-system",
+  "version": "1.0.0",
+  "description": "Cognifyz Task 4 - Interactive student management frontend with modular JavaScript, advanced validation, SPA routing, and Express.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cognifyz",
+    "student-management",
+    "express",
+    "ejs",
+    "bootstrap",
+    "vanilla-javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.2"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pageTitle %> | StudentOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/globals.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="auth-visual">
+      <div class="brand-mark auth-brand">
+        <span class="brand-icon">S</span>
+        <span>
+          <strong>StudentOS</strong>
+          <small>Secure MERN Platform</small>
+        </span>
+      </div>
+      <div class="auth-hero-copy">
+        <p class="eyebrow">Cognifyz Task 6</p>
+        <h1>Run student operations with secure, polished workflows.</h1>
+        <p>JWT authentication, MongoDB persistence, protected routes, and a premium dashboard experience.</p>
+      </div>
+      <div class="metric-strip">
+        <div><strong>100%</strong><span>Protected APIs</span></div>
+        <div><strong>24/7</strong><span>Atlas Ready</span></div>
+        <div><strong>RBAC</strong><span>Authorization</span></div>
+      </div>
+    </section>
+    <section class="auth-panel">
+      <form class="auth-card" id="loginForm">
+        <div class="form-heading">
+          <p class="eyebrow">Welcome back</p>
+          <h2>Login to dashboard</h2>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+          <label for="email">Email address</label>
+        </div>
+        <div class="password-field mb-3">
+          <div class="form-floating">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            <label for="password">Password</label>
+          </div>
+          <button class="icon-button password-toggle" type="button" data-target="password" aria-label="Show password">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+        <button class="btn btn-primary-gradient w-100" type="submit" id="loginSubmit">
+          <span>Login securely</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <p class="auth-switch">New here? <a href="/register">Create an account</a></p>
+      </form>
+    </section>
+  </main>
+  <%- include('../partials/footer.html') %>
+  <script type="module" src="/js/auth/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "cognifyz-task-5-student-management",
+  "version": "1.0.0",
+  "description": "Full Stack Student Management System with REST API for Cognifyz Task 5",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "crud",
+    "rest-api",
+    "student-management"
+  ],
+  "author": "Cognifyz Internship",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "uuid": "^11.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

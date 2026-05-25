@@ -1,0 +1,51 @@
+.dashboard-page {
+  min-height: calc(100vh - 59px);
+}
+
+.dashboard-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  padding: 2.4rem 0;
+}
+
+.dashboard-header h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+}
+
+.dashboard-header p {
+  color: var(--color-muted);
+  margin: 0;
+  max-width: 680px;
+}
+
+.dashboard-content {
+  padding-bottom: 3rem;
+  padding-top: 1.5rem;
+}
+
+.search-box {
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.search-box label {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.modal-content {
+  border: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.toast {
+  border-radius: var(--radius-md);
+}

@@ -1,0 +1,149 @@
+<%- include('partials/navbar.html') %>
+
+<section class="dashboard-hero">
+  <div class="container">
+    <div class="dashboard-title reveal">
+      <span class="section-kicker">Dashboard</span>
+      <h1>Registered Students</h1>
+      <p>Track the temporary in-memory registrations created during this server session.</p>
+    </div>
+
+    <div class="row g-3 stats-grid">
+      <div class="col-sm-6 col-xl-3">
+        <article class="stat-card reveal">
+          <i class="fa-solid fa-users"></i>
+          <span class="counter" data-target="<%= stats.total %>">0</span>
+          <p>Total Students</p>
+        </article>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <article class="stat-card reveal delay-1">
+          <i class="fa-solid fa-book"></i>
+          <span class="counter" data-target="<%= stats.uniqueCourses %>">0</span>
+          <p>Active Courses</p>
+        </article>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <article class="stat-card reveal delay-2">
+          <i class="fa-solid fa-chart-simple"></i>
+          <span class="counter" data-target="<%= stats.averageAge %>">0</span>
+          <p>Average Age</p>
+        </article>
+      </div>
+      <div class="col-sm-6 col-xl-3">
+        <article class="stat-card reveal delay-3 latest-card">
+          <i class="fa-solid fa-bolt"></i>
+          <strong><%= stats.latest %></strong>
+          <p>Latest Entry</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard-section">
+  <div class="container">
+    <div class="glass-panel dashboard-panel reveal">
+      <div class="dashboard-toolbar">
+        <form class="dashboard-filters" action="/dashboard" method="GET">
+          <div class="search-control">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" name="search" placeholder="Search by name, email, or course" value="<%= search %>">
+          </div>
+          <select name="course" aria-label="Filter by course">
+            <option value="">All courses</option>
+            <% courses.forEach((course) => { %>
+              <option value="<%= course %>" <%= selectedCourse === course ? 'selected' : '' %>><%= course %></option>
+            <% }) %>
+          </select>
+          <button class="btn primary-action ripple" type="submit">
+            <i class="fa-solid fa-filter"></i>
+            Apply
+          </button>
+          <% if (search || selectedCourse) { %>
+            <a class="btn ghost-action" href="/dashboard">Clear</a>
+          <% } %>
+        </form>
+
+        <div class="view-toggle" role="group" aria-label="Dashboard view">
+          <button class="active" type="button" data-view="cards" aria-label="Card view"><i class="fa-solid fa-table-cells-large"></i></button>
+          <button type="button" data-view="table" aria-label="Table view"><i class="fa-solid fa-table-list"></i></button>
+        </div>
+      </div>
+
+      <% if (students.length === 0) { %>
+        <div class="empty-state">
+          <i class="fa-regular fa-folder-open"></i>
+          <h2>No students found</h2>
+          <p>New registrations will appear here after successful form submission.</p>
+          <a class="btn primary-action ripple" href="/#register">Register Student</a>
+        </div>
+      <% } else { %>
+        <div id="cardsView" class="student-grid">
+          <% students.forEach((student, index) => { %>
+            <article class="student-card reveal" style="--delay: <%= index * 50 %>ms">
+              <div class="student-top">
+                <div class="avatar"><%= student.fullName.charAt(0).toUpperCase() %></div>
+                <div>
+                  <h2><%= student.fullName %></h2>
+                  <p><%= student.course %></p>
+                </div>
+              </div>
+              <div class="student-meta">
+                <span><i class="fa-regular fa-envelope"></i><%= student.email %></span>
+                <span><i class="fa-solid fa-phone"></i><%= student.phone %></span>
+                <span><i class="fa-solid fa-user-graduate"></i><%= student.age %> years, <%= student.gender %></span>
+                <span><i class="fa-regular fa-clock"></i><%= student.registeredAt.toLocaleString() %></span>
+              </div>
+              <form action="/delete/<%= student.id %>" method="POST">
+                <button class="btn danger-action ripple" type="submit">
+                  <i class="fa-solid fa-trash"></i>
+                  Delete
+                </button>
+              </form>
+            </article>
+          <% }) %>
+        </div>
+
+        <div id="tableView" class="table-responsive student-table-wrap d-none">
+          <table class="table student-table align-middle">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Contact</th>
+                <th>Profile</th>
+                <th>Registered</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% students.forEach((student) => { %>
+                <tr>
+                  <td>
+                    <strong><%= student.fullName %></strong>
+                    <span><%= student.email %></span>
+                  </td>
+                  <td><%= student.course %></td>
+                  <td><%= student.phone %></td>
+                  <td><%= student.age %> years, <%= student.gender %></td>
+                  <td><%= student.registeredAt.toLocaleString() %></td>
+                  <td>
+                    <form action="/delete/<%= student.id %>" method="POST">
+                      <button class="table-delete" type="submit" aria-label="Delete <%= student.fullName %>">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<script src="/js/dashboard.js"></script>
+<%- include('partials/footer.html') %>

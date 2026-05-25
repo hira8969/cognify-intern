@@ -1,0 +1,295 @@
+<%- include('partials/navbar.html') %>
+
+<section id="home" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-copy reveal">
+          <span class="section-kicker">Cognifyz Task 3</span>
+          <h1>Modern Responsive Student Management Frontend</h1>
+          <p class="hero-lead">
+            A premium registration experience with polished validation, smooth motion, responsive layouts, and a dashboard built for scanning student records fast.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary-action ripple" href="#register">
+              <i class="fa-solid fa-arrow-right"></i>
+              Start Registration
+            </a>
+            <a class="btn secondary-action" href="/dashboard">
+              <i class="fa-solid fa-chart-line"></i>
+              View Dashboard
+            </a>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <strong class="counter" data-target="6">0</strong>
+              <span>Courses</span>
+            </div>
+            <div>
+              <strong class="counter" data-target="10">0</strong>
+              <span>Fields checked</span>
+            </div>
+            <div>
+              <strong>100%</strong>
+              <span>Responsive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="hero-visual hero-visual-3d reveal delay-1" data-tilt-card aria-label="Interactive 3D student management preview">
+          <canvas id="studentScene" width="880" height="720" aria-hidden="true"></canvas>
+          <div class="scene-grid" aria-hidden="true"></div>
+          <div class="floating-panel panel-top" data-depth="36">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Validated intake</span>
+          </div>
+          <div class="floating-panel panel-bottom" data-depth="52">
+            <strong>Live</strong>
+            <span>Dashboard sync</span>
+          </div>
+          <div class="mock-card dashboard-hologram" data-depth="28">
+            <div class="hologram-header">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="mock-line wide"></div>
+            <div class="mock-line"></div>
+            <div class="mock-progress"><span></span></div>
+            <div class="hologram-stats">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-band">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="feature-card reveal">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <h2>Animated UI</h2>
+          <p>Reveal effects, hover motion, ripple buttons, input glow, counters, and loader states make the interface feel alive.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="feature-card reveal delay-1">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <h2>Responsive System</h2>
+          <p>Bootstrap grid, flexible form groups, adaptive cards, and mobile-first media queries keep every view clean.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="feature-card reveal delay-2">
+          <i class="fa-solid fa-layer-group"></i>
+          <h2>Clean Structure</h2>
+          <p>CSS, responsive rules, animations, form logic, and dashboard logic are split into focused production-style files.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register" class="registration-section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-4">
+        <div class="section-copy sticky-copy reveal">
+          <span class="section-kicker">Registration</span>
+          <h2>Create a student profile</h2>
+          <p>Every field is checked on the client and server. The dashboard updates as soon as a registration is accepted.</p>
+          <div class="process-list">
+            <div><span>01</span> Enter profile details</div>
+            <div><span>02</span> Validate securely</div>
+            <div><span>03</span> Review in dashboard</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="form-shell glass-panel reveal delay-1">
+          <div class="form-heading">
+            <div>
+              <span class="section-kicker">Student Form</span>
+              <h2>Registration Details</h2>
+            </div>
+            <div class="progress-chip"><span id="progressText">0%</span> complete</div>
+          </div>
+
+          <% if (errors.page) { %>
+            <div class="alert custom-alert" role="alert"><%= errors.page %></div>
+          <% } %>
+
+          <div class="progress form-progress" aria-hidden="true">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <form id="registrationForm" action="/register" method="POST" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-regular fa-user"></i>
+                  <div class="form-floating">
+                    <input class="form-control" type="text" id="fullName" name="fullName" placeholder="Full Name" value="<%= formData.fullName %>">
+                    <label for="fullName">Full Name</label>
+                  </div>
+                  <small class="error-message"><%= errors.fullName || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-regular fa-envelope"></i>
+                  <div class="form-floating">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email Address" value="<%= formData.email %>">
+                    <label for="email">Email Address</label>
+                  </div>
+                  <small class="error-message"><%= errors.email || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-phone"></i>
+                  <div class="form-floating">
+                    <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" maxlength="10" value="<%= formData.phone %>">
+                    <label for="phone">Phone Number</label>
+                  </div>
+                  <small class="error-message"><%= errors.phone || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-cake-candles"></i>
+                  <div class="form-floating">
+                    <input class="form-control" type="number" id="age" name="age" placeholder="Age" min="16" max="80" value="<%= formData.age %>">
+                    <label for="age">Age</label>
+                  </div>
+                  <small class="error-message"><%= errors.age || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-venus-mars"></i>
+                  <div class="form-floating">
+                    <select class="form-select" id="gender" name="gender" aria-label="Gender">
+                      <option value="">Select gender</option>
+                      <option value="Male" <%= formData.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                      <option value="Female" <%= formData.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                      <option value="Other" <%= formData.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                      <option value="Prefer not to say" <%= formData.gender === 'Prefer not to say' ? 'selected' : '' %>>Prefer not to say</option>
+                    </select>
+                    <label for="gender">Gender</label>
+                  </div>
+                  <small class="error-message"><%= errors.gender || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                  <div class="form-floating">
+                    <select class="form-select" id="course" name="course" aria-label="Course">
+                      <option value="">Choose a course</option>
+                      <% courses.forEach((course) => { %>
+                        <option value="<%= course %>" <%= formData.course === course ? 'selected' : '' %>><%= course %></option>
+                      <% }) %>
+                    </select>
+                    <label for="course">Course Selection</label>
+                  </div>
+                  <small class="error-message"><%= errors.course || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-lock"></i>
+                  <div class="password-grid">
+                    <div class="form-floating">
+                      <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                      <label for="password">Password</label>
+                    </div>
+                    <button class="icon-button toggle-password" type="button" data-target="password" aria-label="Show password">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
+                  <div class="strength-meter"><span id="strengthBar"></span></div>
+                  <small id="passwordStrength" class="hint-text">Use uppercase, lowercase, number, and special character.</small>
+                  <small class="error-message"><%= errors.password || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="input-card">
+                  <i class="fa-solid fa-key"></i>
+                  <div class="password-grid">
+                    <div class="form-floating">
+                      <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                      <label for="confirmPassword">Confirm Password</label>
+                    </div>
+                    <button class="icon-button toggle-password" type="button" data-target="confirmPassword" aria-label="Show confirm password">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
+                  <small class="error-message"><%= errors.confirmPassword || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="input-card">
+                  <div class="textarea-label">
+                    <span><i class="fa-solid fa-location-dot"></i> Address</span>
+                    <span id="addressCounter">0/160</span>
+                  </div>
+                  <textarea class="form-control" id="address" name="address" rows="4" maxlength="160" placeholder="Enter your complete address"><%= formData.address %></textarea>
+                  <small class="error-message"><%= errors.address || '' %></small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label class="terms-card" for="terms">
+                  <input type="checkbox" id="terms" name="terms" <%= formData.terms === 'on' ? 'checked' : '' %>>
+                  <span>I agree to the Terms & Conditions and confirm that the student information is accurate.</span>
+                </label>
+                <small class="error-message d-block mt-2"><%= errors.terms || '' %></small>
+              </div>
+            </div>
+
+            <button type="submit" class="btn submit-button ripple">
+              <i class="fa-solid fa-paper-plane"></i>
+              Submit Registration
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="preview-section">
+  <div class="container">
+    <div class="dashboard-preview reveal">
+      <div>
+        <span class="section-kicker">Dashboard Ready</span>
+        <h2>Manage registered students in a clean admin layout.</h2>
+      </div>
+      <a class="btn secondary-action" href="/dashboard">
+        Open Dashboard
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="/js/scene3d.js"></script>
+<%- include('partials/footer.html') %>

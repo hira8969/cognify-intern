@@ -1,0 +1,45 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+}
+
+.register-section,
+.dashboard-section,
+.about-section {
+  background:
+    linear-gradient(180deg, rgba(233, 251, 247, 0.82), transparent 28rem),
+    var(--color-bg);
+}
+
+.form-control::placeholder {
+  color: #98a2b3;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.badge-status.active {
+  background: #ecfdf3;
+  color: var(--color-success);
+}
+
+.badge-status.inactive {
+  background: #fff7ed;
+  color: var(--color-warning);
+}
+
+.student-card.is-hidden {
+  display: none;
+}
+
+.text-truncate-soft {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

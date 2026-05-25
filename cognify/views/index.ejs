@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <section class="hero-section section-pad app-view" id="home" data-route-view="home">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="hero-copy reveal-up">
+              <span class="section-kicker"><i class="fa-solid fa-sparkles"></i> Modern Responsive Student Management</span>
+              <h1>Register students in a polished, portfolio-ready product UI.</h1>
+              <p class="hero-lead">A premium Cognifyz internship interface with animated registration, live validation, responsive dashboard insights, and clean Bootstrap-powered layout.</p>
+              <div class="hero-actions">
+                <a class="btn btn-brand btn-ripple" href="/#/register" data-route-link="register">
+                  <i class="fa-solid fa-user-plus"></i>
+                  Start Registration
+                </a>
+                <a class="btn btn-outline-brand btn-ripple" href="/#/dashboard" data-route-link="dashboard">
+                  <i class="fa-solid fa-table-columns"></i>
+                  View Dashboard
+                </a>
+              </div>
+              <div class="hero-metrics" aria-label="Application highlights">
+                <div>
+                  <strong class="counter" data-count="100">0</strong><span>%</span>
+                  <small>Responsive</small>
+                </div>
+                <div>
+                  <strong class="counter" data-count="6">0</strong><span>+</span>
+                  <small>Learning Tracks</small>
+                </div>
+                <div>
+                  <strong>MVC</strong>
+                  <small>Express Structure</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-visual float-slow reveal-up delay-1" aria-label="Student dashboard preview">
+              <div class="visual-topbar">
+                <span></span><span></span><span></span>
+                <strong>Student OS</strong>
+              </div>
+              <div class="visual-grid">
+                <div class="visual-card tall">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <h2>Enrollments</h2>
+                  <strong>248</strong>
+                  <div class="mini-bars">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="visual-card accent-card">
+                  <span>Frontend</span>
+                  <strong>92%</strong>
+                </div>
+                <div class="visual-card">
+                  <span>MERN Stack</span>
+                  <strong>76%</strong>
+                </div>
+                <div class="visual-list">
+                  <div><span class="avatar-dot"></span><p>Priya Sharma</p><strong>UI/UX</strong></div>
+                  <div><span class="avatar-dot orange"></span><p>Rahul Sen</p><strong>MERN</strong></div>
+                  <div><span class="avatar-dot green"></span><p>Anika Das</p><strong>Frontend</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band section-pad-sm app-view" id="about" data-route-view="about">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="feature-card reveal-up">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <h2>Animated UI</h2>
+              <p>Scroll reveal, floating panels, hover lift, input glow, ripple buttons, and smooth page entry motion.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="feature-card reveal-up delay-1">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <h2>Fully Responsive</h2>
+              <p>Bootstrap grid, flexible cards, CSS grid, and carefully tuned media queries for every viewport.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="feature-card reveal-up delay-2">
+              <i class="fa-solid fa-shield-halved"></i>
+              <h2>Validated Flow</h2>
+              <p>Client-side feedback works with the existing server middleware, preserving the previous backend foundation.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="registration-section section-pad app-view" id="register" data-route-view="register">
+      <div class="container">
+        <div class="row align-items-start g-4 g-xl-5">
+          <div class="col-lg-4">
+            <aside class="register-sidebar reveal-up">
+              <span class="section-kicker">Admission Desk</span>
+              <h2>Create a student profile</h2>
+              <p>Fill in the student details and choose a learning track. The interface checks progress, password strength, and field quality as you type.</p>
+              <div class="process-list">
+                <div><span>01</span><strong>Profile details</strong></div>
+                <div><span>02</span><strong>Course selection</strong></div>
+                <div><span>03</span><strong>Secure validation</strong></div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="col-lg-8">
+            <form class="form-card reveal-up delay-1 registration-form" id="registrationForm" action="/register" method="POST" novalidate>
+              <input type="hidden" id="studentId" name="studentId">
+              <div class="form-header">
+                <div>
+                  <span class="section-kicker">Smart Form</span>
+                  <h2 id="formTitle">Student Registration</h2>
+                </div>
+                <div class="completion-pill">
+                  <span id="progressText">0%</span>
+                  <small>complete</small>
+                </div>
+              </div>
+              <div class="progress-shell" aria-label="Form completion progress">
+                <span class="progress-bar" id="formProgress"></span>
+              </div>
+
+              <div class="row g-3 mt-2">
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-regular fa-user"></i>
+                    <input class="form-control" type="text" id="fullName" name="fullName" placeholder="Full Name" value="<%= oldData.fullName || '' %>">
+                    <label for="fullName">Full Name</label>
+                    <span class="validation-icon" data-status-icon="fullName" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="fullName"><%= errors.fullName || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email Address" value="<%= oldData.email || '' %>">
+                    <label for="email">Email Address</label>
+                    <span class="validation-icon" data-status-icon="email" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="email"><%= errors.email || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" maxlength="10" value="<%= oldData.phone || '' %>">
+                    <label for="phone">Phone Number</label>
+                    <span class="validation-icon" data-status-icon="phone" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="phone"><%= errors.phone || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <input class="form-control" type="number" id="age" name="age" placeholder="Age" min="18" max="60" value="<%= oldData.age || '' %>">
+                    <label for="age">Age</label>
+                    <span class="validation-icon" data-status-icon="age" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="age"><%= errors.age || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-venus-mars"></i>
+                    <select class="form-select" id="gender" name="gender">
+                      <option value="">Select gender</option>
+                      <% ['Female', 'Male', 'Other', 'Prefer not to say'].forEach((gender) => { %>
+                        <option value="<%= gender %>" <%= oldData.gender === gender ? 'selected' : '' %>><%= gender %></option>
+                      <% }) %>
+                    </select>
+                    <label for="gender">Gender</label>
+                    <span class="validation-icon" data-status-icon="gender" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="gender"><%= errors.gender || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <select class="form-select" id="course" name="course">
+                      <option value="">Select a course</option>
+                      <% courses.forEach((course) => { %>
+                        <option value="<%= course %>" <%= oldData.course === course ? 'selected' : '' %>><%= course %></option>
+                      <% }) %>
+                    </select>
+                    <label for="course">Course Selection</label>
+                    <span class="validation-icon" data-status-icon="course" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="course"><%= errors.course || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                    <label for="password">Password</label>
+                    <button type="button" class="icon-action toggle-password" data-target="password" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+                    <div class="strength-track" aria-label="Password strength">
+                      <span id="strengthBar"></span>
+                    </div>
+                    <small id="strengthText" class="hint-text">Password strength: waiting</small>
+                    <ul class="password-suggestions" id="passwordSuggestions" aria-live="polite"></ul>
+                    <small class="error-message" data-error-for="password"><%= errors.password || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating-icon input-group">
+                    <i class="fa-solid fa-key"></i>
+                    <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <button type="button" class="icon-action toggle-password" data-target="confirmPassword" aria-label="Show confirm password"><i class="fa-regular fa-eye"></i></button>
+                    <span class="validation-icon password-status-icon" data-status-icon="confirmPassword" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="confirmPassword"><%= errors.confirmPassword || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating-icon input-group textarea-group">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <textarea class="form-control" id="address" name="address" rows="4" maxlength="160" placeholder="Address"><%= oldData.address || '' %></textarea>
+                    <label for="address">Address</label>
+                    <span class="char-counter"><span id="addressCounter">0</span>/160</span>
+                    <span class="validation-icon textarea-status-icon" data-status-icon="address" aria-hidden="true"></span>
+                    <small class="error-message" data-error-for="address"><%= errors.address || '' %></small>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="terms-box input-group">
+                    <label class="checkbox-label" for="terms">
+                      <input type="checkbox" id="terms" name="terms" <%= oldData.terms === 'on' ? 'checked' : '' %>>
+                      <span>I accept the terms and conditions for this internship registration.</span>
+                    </label>
+                    <small class="error-message" data-error-for="terms"><%= errors.terms || '' %></small>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-brand submit-button btn-ripple" type="submit" data-submit-button>
+                <i class="fa-solid fa-paper-plane"></i>
+                <span data-submit-label>Submit Registration</span>
+              </button>
+              <button class="btn btn-outline-brand form-reset-button btn-ripple" type="button" data-reset-form hidden>
+                <i class="fa-solid fa-xmark"></i>
+                Cancel Edit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-page section-pad app-view" id="dashboard" data-route-view="dashboard">
+      <div class="container">
+        <section class="dashboard-hero reveal-up">
+          <div>
+            <span class="section-kicker">Client Dashboard</span>
+            <h1>Interactive Student Directory</h1>
+            <p>Cards, statistics, live search, edit, and delete update instantly through JavaScript and localStorage.</p>
+          </div>
+          <div class="search-form live-search-shell">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="studentSearch" placeholder="Search name, email, course" autocomplete="off">
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Dynamic registration statistics">
+          <article class="stat-card reveal-up"><span>Total Users</span><strong data-stat="totalUsers">0</strong><small>Saved locally</small></article>
+          <article class="stat-card reveal-up delay-1"><span>Active Users</span><strong data-stat="activeUsers">0</strong><small>Visible after search</small></article>
+          <article class="stat-card reveal-up delay-2"><span>Courses</span><strong data-stat="courseCount">0</strong><small>Unique selections</small></article>
+          <article class="stat-card reveal-up delay-3"><span>Last Updated</span><strong data-stat="lastUpdated">--</strong><small>Current session</small></article>
+        </section>
+
+        <section class="dashboard-content reveal-up">
+          <div class="content-toolbar">
+            <div>
+              <h2>Dynamic User Cards</h2>
+              <p id="dashboardSummary">No students added yet.</p>
+            </div>
+            <a class="btn btn-brand btn-ripple" href="/#/register" data-route-link="register">
+              <i class="fa-solid fa-user-plus"></i>
+              Add Student
+            </a>
+          </div>
+          <div class="student-card-grid task4-card-grid" id="studentCards" aria-live="polite"></div>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon"><i class="fa-regular fa-folder-open"></i></div>
+            <h2>No students yet</h2>
+            <p>Submit the registration form to create the first dynamic student card.</p>
+            <a class="btn btn-brand btn-ripple" href="/#/register" data-route-link="register">Register Student</a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-label="Application notifications"></div>
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="auth-visual">
+      <a class="brand-lockup" href="/login">
+        <span class="brand-mark">C</span>
+        <span><strong>Cognifyz</strong><small>Secure MERN</small></span>
+      </a>
+      <div>
+        <span class="section-kicker">Secure Student Operations</span>
+        <h1>Manage students with protected APIs and MongoDB-backed data.</h1>
+        <p>JWT authentication, bcrypt password security, protected dashboards, and professional CRUD workflows.</p>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <form class="auth-card" id="loginForm" novalidate>
+        <span class="section-kicker">Welcome Back</span>
+        <h2>Login to dashboard</h2>
+        <p>Use your registered account to access the secure student management panel.</p>
+
+        <div class="form-floating-icon input-group">
+          <i class="fa-regular fa-envelope"></i>
+          <input class="form-control" type="email" id="email" name="email" placeholder="Email Address" required>
+          <label for="email">Email Address</label>
+          <small class="error-message" data-error-for="email"></small>
+        </div>
+
+        <div class="form-floating-icon input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
+          <label for="password">Password</label>
+          <button type="button" class="icon-action toggle-password" data-target="password" aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
+          <small class="error-message" data-error-for="password"></small>
+        </div>
+
+        <button class="btn btn-brand btn-ripple auth-submit" type="submit">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Login</span>
+        </button>
+
+        <p class="auth-switch">New here? <a href="/register">Create an account</a></p>
+      </form>
+    </section>
+  </main>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="/js/auth/login.js"></script>
+</body>
+</html>

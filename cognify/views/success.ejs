@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="success-page section-pad">
+    <div class="container">
+      <section class="success-card reveal-up" aria-label="Registration success details">
+        <div class="success-orbit">
+          <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+        </div>
+        <span class="section-kicker">Registration Complete</span>
+        <h1>Welcome, <%= student.fullName %>.</h1>
+        <p>Your student profile passed client-side and server-side validation and was saved in temporary server memory.</p>
+
+        <div class="details-list">
+          <div class="detail-item"><span>Full Name</span><strong><%= student.fullName %></strong></div>
+          <div class="detail-item"><span>Email</span><strong><%= student.email %></strong></div>
+          <div class="detail-item"><span>Phone</span><strong><%= student.phone %></strong></div>
+          <div class="detail-item"><span>Selected Course</span><strong><%= student.course %></strong></div>
+          <div class="detail-item"><span>Registration Time</span><strong><%= student.registrationTime %></strong></div>
+        </div>
+
+        <div class="action-row">
+          <a class="btn btn-brand btn-ripple" href="/#register">
+            <i class="fa-solid fa-plus"></i>
+            Register Another
+          </a>
+          <a class="btn btn-outline-brand btn-ripple" href="/dashboard">
+            <i class="fa-solid fa-chart-line"></i>
+            View Dashboard
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

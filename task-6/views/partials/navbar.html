@@ -1,0 +1,31 @@
+<nav class="topbar">
+  <button class="icon-button sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div>
+    <p class="eyebrow mb-0">Secure MERN Student Management System</p>
+    <h1 class="page-title"><%= pageTitle %></h1>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-button" id="themeToggle" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <div class="profile-menu">
+      <button class="profile-trigger" id="profileTrigger" type="button">
+        <span class="avatar"><%= currentUser.name.charAt(0).toUpperCase() %></span>
+        <span class="profile-copy">
+          <strong><%= currentUser.name %></strong>
+          <small><%= currentUser.role %></small>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <p class="mb-1"><strong><%= currentUser.email %></strong></p>
+        <small>Role: <%= currentUser.role %></small>
+        <button class="btn btn-dark w-100 mt-3" id="logoutButton" type="button">
+          <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

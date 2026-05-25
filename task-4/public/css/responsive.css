@@ -1,0 +1,64 @@
+@media (max-width: 991.98px) {
+  .view-section {
+    padding: 4.5rem 0 3rem;
+  }
+
+  .hero-copy h1 {
+    min-height: 7rem;
+  }
+
+  .hero-visual,
+  .hero-visual img {
+    min-height: 380px;
+  }
+
+  .student-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+
+  .hero-copy h1 {
+    min-height: 6.4rem;
+  }
+
+  .hero-actions,
+  .form-actions,
+  .dashboard-top,
+  .dashboard-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .action-button,
+  .dashboard-toolbar .form-select,
+  .search-control {
+    width: 100%;
+    max-width: none;
+  }
+
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-insight {
+    max-width: calc(100% - 2rem);
+  }
+
+  .toast-root {
+    right: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .app-toast {
+    width: 100%;
+  }
+}

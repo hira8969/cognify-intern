@@ -1,0 +1,42 @@
+<%- include('partials/navbar.html') %>
+
+<section class="success-section">
+  <div class="container">
+    <div class="success-panel glass-panel reveal">
+      <div class="success-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <span class="section-kicker">Registration Complete</span>
+      <h1>Welcome, <%= student.fullName %></h1>
+      <p>Your student profile was saved temporarily on the Express server and is ready in the dashboard.</p>
+
+      <div class="success-details">
+        <div>
+          <span>Email</span>
+          <strong><%= student.email %></strong>
+        </div>
+        <div>
+          <span>Course</span>
+          <strong><%= student.course %></strong>
+        </div>
+        <div>
+          <span>Registered</span>
+          <strong><%= student.registeredAt.toLocaleString() %></strong>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a class="btn primary-action ripple" href="/dashboard">
+          <i class="fa-solid fa-chart-line"></i>
+          View Dashboard
+        </a>
+        <a class="btn ghost-action" href="/#register">
+          <i class="fa-solid fa-plus"></i>
+          Add Another
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer.html') %>

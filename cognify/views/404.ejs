@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="success-page section-pad">
+    <div class="container">
+      <section class="success-card compact-card reveal-up">
+        <div class="empty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <span class="section-kicker">Route Notice</span>
+        <h1><%= title %></h1>
+        <p><%= typeof message !== 'undefined' ? message : 'The route you opened does not exist in this Cognifyz Task 3 project.' %></p>
+        <div class="action-row single-action">
+          <a class="btn btn-brand btn-ripple" href="/">Go Home</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

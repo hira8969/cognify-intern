@@ -1,0 +1,105 @@
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text);
+}
+
+.brand-mark small,
+.profile-copy small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.brand-icon,
+.avatar {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: var(--radius);
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  font-weight: 800;
+}
+
+.toast-region {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 1080;
+  display: grid;
+  gap: 0.75rem;
+  width: min(360px, calc(100vw - 2rem));
+}
+
+.app-toast {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--surface-solid);
+  box-shadow: var(--shadow);
+  animation: slideUp 0.25s ease both;
+}
+
+.app-toast.success i {
+  color: var(--success);
+}
+
+.app-toast.error i {
+  color: var(--danger);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  min-width: 86px;
+  justify-content: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.status-active {
+  color: #047857;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.status-pending {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.16);
+}
+
+.status-graduated {
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.status-blocked {
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.14);
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+}
+
+.password-field .form-control {
+  padding-right: 3.2rem;
+}

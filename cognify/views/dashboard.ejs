@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="dashboard-page section-pad">
+    <div class="container">
+      <section class="dashboard-hero reveal-up">
+        <div>
+          <span class="section-kicker">Live Dashboard</span>
+          <h1>Registered Students</h1>
+          <p>Search, scan, and manage the students currently stored in server memory.</p>
+        </div>
+        <form class="search-form" method="GET" action="/dashboard">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" name="search" placeholder="Search name, email, course" value="<%= search %>">
+          <button class="btn btn-brand btn-ripple" type="submit">Search</button>
+        </form>
+      </section>
+
+      <section class="stats-grid" aria-label="Registration statistics">
+        <article class="stat-card reveal-up">
+          <span>Total Registrations</span>
+          <strong class="counter" data-count="<%= totalStudents %>">0</strong>
+          <small>All students in memory</small>
+        </article>
+        <article class="stat-card reveal-up delay-1">
+          <span>Displayed Records</span>
+          <strong class="counter" data-count="<%= students.length %>">0</strong>
+          <small>After current search</small>
+        </article>
+        <article class="stat-card reveal-up delay-2">
+          <span>Storage Mode</span>
+          <strong>Memory</strong>
+          <small>Fast temporary session data</small>
+        </article>
+        <article class="stat-card reveal-up delay-3">
+          <span>UI Status</span>
+          <strong>Ready</strong>
+          <small>Responsive dashboard</small>
+        </article>
+      </section>
+
+      <section class="dashboard-content reveal-up delay-1">
+        <div class="content-toolbar">
+          <div>
+            <h2>Student Directory</h2>
+            <p><%= search ? `Filtered by "${search}"` : 'All registered students are listed below.' %></p>
+          </div>
+          <a class="btn btn-outline-brand btn-ripple" href="/#register">
+            <i class="fa-solid fa-user-plus"></i>
+            Add Student
+          </a>
+        </div>
+
+        <% if (students.length === 0) { %>
+          <div class="empty-state">
+            <div class="empty-icon"><i class="fa-regular fa-folder-open"></i></div>
+            <h2>No students found</h2>
+            <p>Register a student first or clear the search filter to see more results.</p>
+            <a class="btn btn-brand btn-ripple" href="/#register">Open Registration</a>
+          </div>
+        <% } else { %>
+          <div class="table-responsive student-table-wrap">
+            <table class="table student-table align-middle">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Course</th>
+                  <th>Contact</th>
+                  <th>Age</th>
+                  <th>Registered</th>
+                  <th class="text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% students.forEach((student, index) => { %>
+                  <tr class="student-row" style="--row-delay: <%= index * 60 %>ms">
+                    <td>
+                      <div class="student-identity">
+                        <div class="avatar"><%= student.fullName.charAt(0).toUpperCase() %></div>
+                        <div>
+                          <strong><%= student.fullName %></strong>
+                          <small><%= student.gender %></small>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="course-pill"><%= student.course %></span></td>
+                    <td>
+                      <div class="contact-stack">
+                        <span><%= student.email %></span>
+                        <small><%= student.phone %></small>
+                      </div>
+                    </td>
+                    <td><strong><%= student.age %></strong></td>
+                    <td><%= student.registrationTime %></td>
+                    <td class="text-end">
+                      <form method="POST" action="/students/<%= student.id %>/delete" data-confirm-delete>
+                        <button class="icon-danger btn-ripple" type="submit" aria-label="Delete <%= student.fullName %>">
+                          <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="student-card-grid">
+            <% students.forEach((student, index) => { %>
+              <article class="student-card reveal-up" style="--row-delay: <%= index * 60 %>ms">
+                <div class="student-card-header">
+                  <div class="avatar"><%= student.fullName.charAt(0).toUpperCase() %></div>
+                  <div>
+                    <h2><%= student.fullName %></h2>
+                    <p><%= student.email %></p>
+                  </div>
+                </div>
+                <dl>
+                  <div><dt>Course</dt><dd><%= student.course %></dd></div>
+                  <div><dt>Phone</dt><dd><%= student.phone %></dd></div>
+                  <div><dt>Age</dt><dd><%= student.age %></dd></div>
+                  <div><dt>Gender</dt><dd><%= student.gender %></dd></div>
+                  <div class="wide-detail"><dt>Address</dt><dd><%= student.address %></dd></div>
+                  <div class="wide-detail"><dt>Registered</dt><dd><%= student.registrationTime %></dd></div>
+                </dl>
+                <form method="POST" action="/students/<%= student.id %>/delete" data-confirm-delete>
+                  <button class="btn btn-danger-soft btn-ripple" type="submit">
+                    <i class="fa-regular fa-trash-can"></i>
+                    Delete
+                  </button>
+                </form>
+              </article>
+            <% }) %>
+          </div>
+        <% } %>
+      </section>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
